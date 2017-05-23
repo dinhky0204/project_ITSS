@@ -31,24 +31,23 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="../liftBody.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../liftCtrl.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../liftMng.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="../liftSensor.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../opePanel1.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="ITSS.layout" />
+		<Unit filename="Makefile" />
 		<Unit filename="lib.h" />
 		<Unit filename="library.h" />
 		<Unit filename="liftBody.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="liftCtrl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="liftMng.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="opePanel1.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="opePanel2.c">

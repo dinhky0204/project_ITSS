@@ -34,15 +34,6 @@ int main() {
 		return 1;
 	}
     //Create the segment.
-    if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
-        perror("shmget");
-        exit(1);
-    }
-    //Now we attach the segment to our data space.
-    if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) {
-        perror("shmat");
-        exit(1);
-    }
 
     if ((shmid1 = shmget(key_p1, SHMSZ, IPC_CREAT | 0666)) < 0) {
         perror("shmget");
