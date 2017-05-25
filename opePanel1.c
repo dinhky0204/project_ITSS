@@ -218,7 +218,7 @@ int main(int argc, char *argv[])
                      GTK_FILL, GTK_FILL, 3, 3);
     gtk_table_attach(GTK_TABLE(table), err, 1, 2, 1, 2,
                      GTK_FILL, GTK_FILL, 3, 3);
-    gtk_table_attach(GTK_TABLE(table), sensor1, 2, 3, 0, 1,
+    gtk_table_attach(GTK_TABLE(table), sensor1, 2, 3, 1, 2,
                      GTK_FILL, GTK_FILL, 3, 3);
 
     gtk_container_add(GTK_CONTAINER(window), table);

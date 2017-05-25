@@ -26,7 +26,7 @@ void show_info1(GtkWidget *widget, gpointer window)
                                     GTK_DIALOG_DESTROY_WITH_PARENT,
                                     GTK_MESSAGE_INFO,
                                     GTK_BUTTONS_OK,
-                                    "Bạn đã chọn 1");
+                                    "Called");
     gtk_window_set_title(GTK_WINDOW(dialog), "Information");
     gtk_dialog_run(GTK_DIALOG(dialog));
     gtk_widget_destroy(dialog);
@@ -37,59 +37,6 @@ void show_info1(GtkWidget *widget, gpointer window)
 
 }
 
-void show_info2(GtkWidget *widget, gpointer window)
-{
-
-    GtkWidget *dialog;
-    dialog = gtk_message_dialog_new(GTK_WINDOW(window),
-                                    GTK_DIALOG_DESTROY_WITH_PARENT,
-                                    GTK_MESSAGE_INFO,
-                                    GTK_BUTTONS_OK,
-                                    "Bạn đã chọn 2");
-    gtk_window_set_title(GTK_WINDOW(dialog), "Information");
-    gtk_dialog_run(GTK_DIALOG(dialog));
-    gtk_widget_destroy(dialog);
-     buttoninfo.value.sival_int = 2;
-    if(sigqueue(buttoninfo.point, SIGTERM, buttoninfo.value) == 0) {
-        printf("signal sent successfully!!\n");
-    }
-}
-
-void show_info3(GtkWidget *widget, gpointer window)
-{
-
-    GtkWidget *dialog;
-    dialog = gtk_message_dialog_new(GTK_WINDOW(window),
-                                    GTK_DIALOG_DESTROY_WITH_PARENT,
-                                    GTK_MESSAGE_INFO,
-                                    GTK_BUTTONS_OK,
-                                    "Bạn đã chọn 3");
-    gtk_window_set_title(GTK_WINDOW(dialog), "Information");
-    gtk_dialog_run(GTK_DIALOG(dialog));
-    gtk_widget_destroy(dialog);
-    buttoninfo.value.sival_int = 3;
-    if(sigqueue(buttoninfo.point, SIGTERM, buttoninfo.value) == 0) {
-        printf("signal sent successfully!!\n");
-    }
-}
-
-void show_info5(GtkWidget *widget, gpointer window)
-{
-
-    GtkWidget *dialog;
-    dialog = gtk_message_dialog_new(GTK_WINDOW(window),
-                                    GTK_DIALOG_DESTROY_WITH_PARENT,
-                                    GTK_MESSAGE_INFO,
-                                    GTK_BUTTONS_OK,
-                                    "Bạn đã chọn 5");
-    gtk_window_set_title(GTK_WINDOW(dialog), "Information");
-    gtk_dialog_run(GTK_DIALOG(dialog));
-    gtk_widget_destroy(dialog);
-    buttoninfo.value.sival_int = 5;
-    if(sigqueue(buttoninfo.point, SIGTERM, buttoninfo.value) == 0) {
-        printf("signal sent successfully!!\n");
-    }
-}
 
 void myCSS(void){
     GtkCssProvider *provider;
@@ -193,10 +140,7 @@ int main(int argc, char *argv[])
     gtk_table_set_row_spacings(GTK_TABLE(table), 4);
     gtk_table_set_col_spacings(GTK_TABLE(table), 2);
 
-    info = gtk_button_new_with_label("　Tầng 3");
-    warn = gtk_button_new_with_label("Tầng 5");
-    que = gtk_button_new_with_label("Tầng 1");
-    err = gtk_button_new_with_label("Tầng 2");
+    que = gtk_button_new_with_label("Call");
     sensor1 = gtk_button_new_with_label("sensor");
 
     gtk_widget_set_size_request(sensor1, 50, 50);
@@ -207,32 +151,16 @@ int main(int argc, char *argv[])
 
     gtk_widget_modify_bg (sensor1, GTK_STATE_NORMAL, &color);
 
-
-    gtk_table_attach(GTK_TABLE(table), info, 0, 1, 0, 1,
+    gtk_table_attach(GTK_TABLE(table), que, 0, 1, 0, 1,
                      GTK_FILL, GTK_FILL, 3, 3);
-    gtk_table_attach(GTK_TABLE(table), warn, 1, 2, 0, 1,
-                     GTK_FILL, GTK_FILL, 3, 3);
-    gtk_table_attach(GTK_TABLE(table), que, 0, 1, 1, 2,
-                     GTK_FILL, GTK_FILL, 3, 3);
-    gtk_table_attach(GTK_TABLE(table), err, 1, 2, 1, 2,
-                     GTK_FILL, GTK_FILL, 3, 3);
-    gtk_table_attach(GTK_TABLE(table), sensor1, 2, 3, 0, 1,
+    gtk_table_attach(GTK_TABLE(table), sensor1, 0, 1, 1, 2,
                      GTK_FILL, GTK_FILL, 3, 3);
 
     gtk_container_add(GTK_CONTAINER(window), table);
     gtk_container_set_border_width(GTK_CONTAINER(window), 20);
 
-    g_signal_connect(G_OBJECT(info), "clicked",
-                     G_CALLBACK(show_info3), (gpointer) window);
-
-    g_signal_connect(G_OBJECT(warn), "clicked",
-                     G_CALLBACK(show_info5), (gpointer) window);
-
     g_signal_connect(G_OBJECT(que), "clicked",
                      G_CALLBACK(show_info1), (gpointer) window);
-
-    g_signal_connect(G_OBJECT(err), "clicked",
-                     G_CALLBACK(show_info2), (gpointer) window);
 
 
 
