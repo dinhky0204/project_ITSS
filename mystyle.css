@@ -1,0 +1,25 @@
+GtkButton {
+    background-image: none;
+}
+
+#myGrid {
+    background-color: cyan;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+#myChildTop {
+    background-color: white;
+}
+
+#myButton_blue{
+    background-color: blue;
+    color: white;
+    font-family: DejaVu Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    border-radius: 25px;
+}
+

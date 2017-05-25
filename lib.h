@@ -10,11 +10,15 @@
 #include <sys/shm.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <gtk/gtk.h>
+#include <math.h>
 #define FIFO_NAME "my_fifo" /*Tạo đường ống*/
 #define BUFFER_SIZE PIPE_BUF /*Vùng đệm dùng cho đường ống*/
 #define TEN_MEG ( 1024 * 100 * 10 ) /*Dữ liệu*/
 #define SHMSZ (1024*50)
 
+GdkColor color;
+GtkWidget *sensor1;
 typedef struct Process {
     long PID;
 }Process;

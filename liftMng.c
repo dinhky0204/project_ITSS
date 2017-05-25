@@ -34,15 +34,6 @@ int main() {
 		return 1;
 	}
     //Create the segment.
-    if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
-        perror("shmget");
-        exit(1);
-    }
-    //Now we attach the segment to our data space.
-    if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) {
-        perror("shmat");
-        exit(1);
-    }
 
     if ((shmid1 = shmget(key_p1, SHMSZ, IPC_CREAT | 0666)) < 0) {
         perror("shmget");
@@ -58,9 +49,10 @@ int main() {
     id_mng = (long)getpid();
     sprintf(id,"%ld",id_mng);
     printf("%ld\n",id_mng);
-    strcat(shm1,"0-");
-    strcat(shm1,id);
-    strcat(shm1,"|");
+    sprintf(shm1,"0-%ld|",id_mng);
+    //strcat(shm1,"0-");
+    //strcat(shm1,id);
+    //strcat(shm1,"|");
     list_process[0].PID = id_mng;
     printf("list process: %ld\n", list_process[0].PID);
     /*Tạo pipe nếu chưa có*/

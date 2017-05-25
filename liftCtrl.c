@@ -5,6 +5,7 @@ int current_point = 1;
 
 int main()
 {
+    float height = 1.5;
     int pipe_fd;
     int res;
     int open_mode = O_RDONLY;
@@ -12,9 +13,33 @@ int main()
     char buffer[BUFFER_SIZE + 1];
     int point_start;
     int point_end;
+    int shmid;
+    key_t key;
+    char *shm;
     status = 0;
+    key = 5678;
+
+    if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
+        perror("shmget");
+        exit(1);
+    }
+
+    /*
+     * Now we attach the segment to our data space.
+     */
+    if ((shm = (char*)shmat(shmid, NULL, 0)) == (char *) -1) {
+        perror("shmat");
+        exit(1);
+    }
+
 
     printf( "Process %d starting to read on pipe\n", getpid() );
+
+    pipe_fd = open( FIFO_NAME, open_mode);
+
+
+
+    sprintf(shm,"%f",height);
     if(status==0)
     {
         pipe_fd = open( FIFO_NAME, open_mode);
@@ -26,26 +51,141 @@ int main()
                 point_start = atoi(getStrByIndex(buffer,0,"-"));
                 point_end = atoi(getStrByIndex(buffer,2,"-"));
 
-                printf("Current point(%d): %d  ->  %d\n",current_point, point_start, point_end);
                 if(point_start==1)
                 {
-                    printf("Sleep: %d\n",abs(point_end-point_start)*6+3+3);
-                    printf("from %d   to %d\n", current_point, point_end);
-                    sleep(abs(point_end-point_start)*6+3+3);
-                    printf("from %d   to   %d\n", point_end, 1);
-                    sleep(abs(point_end-1)*6);
+                    sprintf(shm, "%f", 1.5);
+                    printf("Leep 3s xep do \n");
+                    sleep(3);
+                    printf("Xep do xong, bat dau di chuyen: \n");
+                    for(int i = 2; i<=point_end; i++)
+                    {
+                        if(i==2) {
+                            sleep(4);
+                            height = 3.5;
+                            sprintf(shm,"%f",height);
+                            printf("Sleep 4s(1->2)\n");
+                        }
+                        else
+                        {
+                            sleep(6);
+                            height = height + 3;
+                            sprintf(shm,"%f",height);
+                            printf("Sleep 6s(%d->%d)\n", i, i+1);
+                        }
+                    }
+
+                    sleep(2);
+                    height = height + 1;
+                    sprintf(shm,"%f",height);
+                    //di chuyen xong tang 1
+                    for(int i = (point_end-1); i>=1; i--) {
+                        if(i==(point_end - 1)) {
+                            sleep(4);
+                            height = height - 2;
+                            sprintf(shm,"%f",height);
+                            printf("Sleep 4s\n");
+                        }
+                        else {
+                            sleep(6);
+                            height = height - 3;
+                            sprintf(shm,"%f",height);
+                            printf("Sleep 6s(%d->%d)\n", i, i+1);
+                        }
+                    }
+                    sleep(2);
+                    height = height - 1;
+                    sprintf(shm,"%f",height);
                 }
                 else {
-                    printf("Sleep: %d\n",abs(point_start-1)*6);  // 1 => point_start
-                    printf("from %d   to %d\n", 1,point_start);
-                    sleep((point_start-1)*6);
 
-                    printf("Sleep: %d\n",abs(point_end-point_start)*6);
-                    printf("from %d   to %d\n", point_start,point_end);
-                    sleep(abs(point_end-point_start)*6 +3 +3 );
+                    for(int i = 2; i<=point_start; i++)   //1 => point_start
+                    {
+                        if(i==2) {
+                            sleep(4);
+                            height = 3.5;
+                            sprintf(shm,"%f",height);
+                            printf("Sleep 4s(1->2)\n");
+                        }
+                        else
+                        {
+                            sleep(6);
+                            height = height + 3;
+                            sprintf(shm,"%f",height);
+                            printf("Sleep 6s(%d->%d)\n", i, i+1);
+                        }
+                    }
+                    sleep(2);
+                    height = height + 1;
+                    sprintf(shm,"%f",height);
 
-                    printf("from %d   to   %d\n", point_end, 1);
-                    sleep(abs(point_end-1)*6);
+                    printf("Sleep 3s bat dau xep do\n");
+                    sleep(3);
+
+                    if(point_start > point_end) {
+
+                        for(int i = (point_start-1); i>=point_end; i--) {
+                            if(i==(point_start - 1)) {
+                                sleep(4);
+                                height = height - 2;
+                                sprintf(shm,"%f",height);
+                                printf("Sleep 4s\n");
+                            }
+                            else {
+                                sleep(6);
+                                height = height - 3;
+                                sprintf(shm,"%f",height);
+                                printf("Sleep 6s(%d->%d)\n", i, i+1);
+                            }
+                        }
+                        sleep(2);
+                        height = height - 1;
+                        sprintf(shm,"%f",height);
+                    }
+                    else {
+                        for(int i = (point_start+1); i<=point_end; i++)
+                        {
+                            if(i==(point_start+1)) {
+                                sleep(4);
+                                height = height + 2;
+                                sprintf(shm,"%f",height);
+                                printf("Sleep 4s(1->2)\n");
+                            }
+                            else
+                            {
+                                sleep(6);
+                                height = height + 3;
+                                sprintf(shm,"%f",height);
+                                printf("Sleep 6s(%d->%d)\n", i, i+1);
+                            }
+                        }
+
+                        sleep(2);
+                        height = height + 1;
+                        sprintf(shm,"%f",height);
+                    }
+
+                    printf("Xep do o diem dich\n");
+                    sleep(3);
+                    for(int i = (point_end-1); i>=1; i--) {
+                        if(i==(point_end - 1)) {
+                            sleep(4);
+                            height = height - 2;
+                            sprintf(shm,"%f",height);
+                            printf("Sleep 4s\n");
+                        }
+                        else {
+                            sleep(6);
+                            height = height - 3;
+                            sprintf(shm,"%f",height);
+                            printf("Sleep 6s(%d->%d)\n", i, i+1);
+                        }
+                    }
+                    if(point_end!=1) {
+                        sleep(2);
+                        height = height - 1;
+                        sprintf(shm,"%f",height);
+                    }
+
 
                 }
                 //current_point = point_end;
