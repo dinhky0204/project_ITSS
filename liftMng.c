@@ -49,9 +49,10 @@ int main() {
     id_mng = (long)getpid();
     sprintf(id,"%ld",id_mng);
     printf("%ld\n",id_mng);
-    strcat(shm1,"0-");
-    strcat(shm1,id);
-    strcat(shm1,"|");
+    sprintf(shm1,"0-%ld|",id_mng);
+    //strcat(shm1,"0-");
+    //strcat(shm1,id);
+    //strcat(shm1,"|");
     list_process[0].PID = id_mng;
     printf("list process: %ld\n", list_process[0].PID);
     /*Tạo pipe nếu chưa có*/

@@ -47,6 +47,7 @@
 		<Unit filename="liftMng.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="make" />
 		<Unit filename="opePanel1.c">
 			<Option compilerVar="CC" />
 		</Unit>
