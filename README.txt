@@ -1,0 +1,10 @@
+1: run make
+2: run ./liftMng
+3: run ./liftCtrl
+4: run ./liftBody
+5: run ./opePanel1
+6: run ./opePanel2
+7: run ./opePanel3
+8: run ./opePanel4
+9: run ./opePanel5
+10: run ./liftSensor
