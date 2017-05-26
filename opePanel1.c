@@ -32,7 +32,7 @@ void show_info2(GtkWidget *widget, gpointer window)
     gtk_widget_destroy(dialog);
     buttoninfo.value.sival_int = 2;
     if(sigqueue(buttoninfo.point, SIGTERM, buttoninfo.value) == 0) {
-        printf("signal sent successfully!!\n");
+        printf("Call Ok!!\n");
     }
 
 }
@@ -51,7 +51,7 @@ void show_info3(GtkWidget *widget, gpointer window)
     gtk_widget_destroy(dialog);
      buttoninfo.value.sival_int = 3;
     if(sigqueue(buttoninfo.point, SIGTERM, buttoninfo.value) == 0) {
-        printf("signal sent successfully!!\n");
+        printf("Call Ok!!\n");
     }
 }
 
@@ -69,7 +69,7 @@ void show_info4(GtkWidget *widget, gpointer window)
     gtk_widget_destroy(dialog);
     buttoninfo.value.sival_int = 4;
     if(sigqueue(buttoninfo.point, SIGTERM, buttoninfo.value) == 0) {
-        printf("signal sent successfully!!\n");
+        printf("Call Ok!!\n");
     }
 }
 
@@ -87,7 +87,7 @@ void show_info5(GtkWidget *widget, gpointer window)
     gtk_widget_destroy(dialog);
     buttoninfo.value.sival_int = 5;
     if(sigqueue(buttoninfo.point, SIGTERM, buttoninfo.value) == 0) {
-        printf("signal sent successfully!!\n");
+        printf("Call Ok!!\n");
     }
 }
 
@@ -113,7 +113,7 @@ static void hdl (int sig, siginfo_t *siginfo, void *context)
 	//printf ("Sending PID: %ld, UID: %ld\n", (long)siginfo->si_pid, (long)siginfo->si_value.sival_int);
     //return siginfo->si_value.sival_int;
     if(siginfo->si_value.sival_int==1) {
-        printf("Den xanh\n");
+        //printf("Den xanh\n");
         gdk_color_parse ("blue", &color);
 
         gtk_widget_modify_bg (sensor1, GTK_STATE_NORMAL, &color);
@@ -184,7 +184,8 @@ int main(int argc, char *argv[])
     myCSS();
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
-    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_NONE);
+    //gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_NONE);
+    gtk_window_move(GTK_WINDOW(window), 500, 600);
     gtk_window_set_default_size(GTK_WINDOW(window), 150, 150);
     gtk_window_set_title(GTK_WINDOW(window), "Điều khiển tầng 1");
 

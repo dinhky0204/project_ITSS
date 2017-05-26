@@ -95,153 +95,154 @@ int main() {
         height = atof(shm);
         if(height>0 && height<=3)
         {
-            printf("Sensor1: ON\n");
-            value.sival_int = 1;
-            pid = list_process[1].PID;
-            if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
-            }
-
             value.sival_int = 0;
             pid = list_process[2].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
 
             pid = list_process[3].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
 
             pid = list_process[4].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
 
             pid = list_process[5].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
+            }
+            sleep(3);
+            printf("Sensor1: ON\n");
+            value.sival_int = 1;
+            pid = list_process[1].PID;
+            if(sigqueue(pid, SIGTERM, value) == 0) {
+                //printf("signal sent successfully!!\n");
             }
 
         }
 
         if(height>3 && height<=6)
         {
-            value.sival_int = 1;
-            pid = list_process[2].PID;
-            if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
-            }
-
             value.sival_int = 0;
             pid = list_process[1].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
 
             pid = list_process[3].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
             pid = list_process[4].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
             pid = list_process[5].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
+            }
+            sleep(3);
+            printf("Sensor2: ON\n");
+            value.sival_int = 1;
+            pid = list_process[2].PID;
+            if(sigqueue(pid, SIGTERM, value) == 0) {
+                //printf("signal sent successfully!!\n");
             }
 
         }
 
         if(height>6 && height<=9)
         {
-            printf("Sensor3: ON\n");
-            value.sival_int = 1;
-            pid = list_process[3].PID;
-            if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
-            }
-
             value.sival_int = 0;
             pid = list_process[1].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
 
             pid = list_process[2].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
             pid = list_process[4].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
             pid = list_process[5].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
+            }
+            sleep(3);
+            printf("Sensor3: ON\n");
+            value.sival_int = 1;
+            pid = list_process[3].PID;
+            if(sigqueue(pid, SIGTERM, value) == 0) {
+                //printf("signal sent successfully!!\n");
             }
         }
 
         if(height>9 && height<=12)
         {
-            printf("Sensor4: ON\n");
-            value.sival_int = 1;
-            pid = list_process[4].PID;
-            if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
-            }
-
             value.sival_int = 0;
             pid = list_process[1].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
 
             pid = list_process[2].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
             pid = list_process[3].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
             pid = list_process[5].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
+            }
+            sleep(3);
+            printf("Sensor4: ON\n");
+            value.sival_int = 1;
+            pid = list_process[4].PID;
+            if(sigqueue(pid, SIGTERM, value) == 0) {
+                //printf("signal sent successfully!!\n");
             }
         }
 
         if(height>12 && height<=15)
         {
-            printf("Sensor5: ON\n");
-            value.sival_int = 1;
-            pid = list_process[5].PID;
-            if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
-            }
-
             value.sival_int = 0;
             pid = list_process[1].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
 
             pid = list_process[2].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
             pid = list_process[3].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
             }
             pid = list_process[4].PID;
             if(sigqueue(pid, SIGTERM, value) == 0) {
-                printf("signal sent successfully!!\n");
+                //printf("signal sent successfully!!\n");
+            }
+            sleep(3);
+            printf("Sensor5: ON\n");
+            value.sival_int = 1;
+            pid = list_process[5].PID;
+            if(sigqueue(pid, SIGTERM, value) == 0) {
+                //printf("signal sent successfully!!\n");
             }
         }
 
-        sleep(2);
+        sleep(1);
     }
 
 

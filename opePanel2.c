@@ -60,7 +60,7 @@ static void hdl (int sig, siginfo_t *siginfo, void *context)
 	//printf ("Sending PID: %ld, UID: %ld\n", (long)siginfo->si_pid, (long)siginfo->si_value.sival_int);
     //return siginfo->si_value.sival_int;
     if(siginfo->si_value.sival_int==1) {
-        printf("Den xanh\n");
+        //printf("Den xanh\n");
         gdk_color_parse ("blue", &color);
 
         gtk_widget_modify_bg (sensor1, GTK_STATE_NORMAL, &color);
@@ -129,14 +129,15 @@ int main(int argc, char *argv[])
     myCSS();
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
-    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_NONE);
-    gtk_window_set_default_size(GTK_WINDOW(window), 150, 150);
-    gtk_window_set_title(GTK_WINDOW(window), "Điều khiển tầng 2");
+    //gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_NONE);
+    gtk_window_move(GTK_WINDOW(window), 500, 450);
+    gtk_window_set_default_size(GTK_WINDOW(window), 100, 100);
+    gtk_window_set_title(GTK_WINDOW(window), "Tầng 2");
 
     darea = gtk_drawing_area_new();  //plus
     //gtk_container_add(GTK_CONTAINER(window), darea); //plus
 
-    table = gtk_table_new(2, 2, TRUE);
+    table = gtk_table_new(1, 2, TRUE);
     gtk_table_set_row_spacings(GTK_TABLE(table), 4);
     gtk_table_set_col_spacings(GTK_TABLE(table), 2);
 
@@ -155,7 +156,7 @@ int main(int argc, char *argv[])
     gtk_table_attach(GTK_TABLE(table), que, 0, 1, 0, 1,
                      GTK_FILL, GTK_FILL, 3, 3);
 
-    gtk_table_attach(GTK_TABLE(table), sensor1, 0, 1, 1, 2,
+    gtk_table_attach(GTK_TABLE(table), sensor1, 1, 2, 0, 1,
                      GTK_FILL, GTK_FILL, 3, 3);
 
     gtk_container_add(GTK_CONTAINER(window), table);
