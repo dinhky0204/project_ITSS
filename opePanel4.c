@@ -182,7 +182,8 @@ int main(int argc, char *argv[])
     myCSS();
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
-    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_NONE);
+    //gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_NONE);
+    gtk_window_move(GTK_WINDOW(window), 500, 150);
     gtk_window_set_default_size(GTK_WINDOW(window), 150, 150);
     gtk_window_set_title(GTK_WINDOW(window), "Điều khiển tầng 4");
 
