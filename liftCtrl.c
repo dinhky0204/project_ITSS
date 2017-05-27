@@ -42,7 +42,7 @@ int main()
     sprintf(shm,"%f",height);
     if(status==0)
     {
-        pipe_fd = open( FIFO_NAME, open_mode);
+    pipe_fd = open( FIFO_NAME, open_mode);
         if ( pipe_fd != -1 )
         {
             do
@@ -70,31 +70,34 @@ int main()
                             sleep(6);
                             height = height + 3;
                             sprintf(shm,"%f",height);
-                            printf("Sleep 6s(%d->%d)\n", i, i+1);
+                            printf("Sleep 6s(%d->%d)\n", i-1, i);
                         }
                     }
 
                     sleep(2);
                     height = height + 1;
                     sprintf(shm,"%f",height);
+                    printf("Xep do o diem dich\n");
+                    sleep(3);
                     //di chuyen xong tang 1
                     for(int i = (point_end-1); i>=1; i--) {
                         if(i==(point_end - 1)) {
                             sleep(4);
                             height = height - 2;
                             sprintf(shm,"%f",height);
-                            printf("Sleep 4s\n");
+                            printf("Sleep 4s(%d -> %d)\n", point_end, point_end-1);
                         }
                         else {
                             sleep(6);
                             height = height - 3;
                             sprintf(shm,"%f",height);
-                            printf("Sleep 6s(%d->%d)\n", i, i+1);
+                            printf("Sleep 6s(%d->%d)\n", i+1, i);
                         }
                     }
                     sleep(2);
                     height = height - 1;
                     sprintf(shm,"%f",height);
+
                 }
                 else {
 
@@ -111,7 +114,7 @@ int main()
                             sleep(6);
                             height = height + 3;
                             sprintf(shm,"%f",height);
-                            printf("Sleep 6s(%d->%d)\n", i, i+1);
+                            printf("Sleep 6s(%d->%d)\n", i-1, i);
                         }
                     }
                     sleep(2);
@@ -128,18 +131,20 @@ int main()
                                 sleep(4);
                                 height = height - 2;
                                 sprintf(shm,"%f",height);
-                                printf("Sleep 4s\n");
+                                printf("Sleep 4s(%d -> %d)\n", i+1, i);
                             }
                             else {
                                 sleep(6);
                                 height = height - 3;
                                 sprintf(shm,"%f",height);
-                                printf("Sleep 6s(%d->%d)\n", i, i+1);
+                                printf("Sleep 6s(%d->%d)\n", i+1, i);
                             }
                         }
                         sleep(2);
                         height = height - 1;
                         sprintf(shm,"%f",height);
+                        printf("Xep do o diem dich\n");
+                        sleep(3);
                     }
                     else {
                         for(int i = (point_start+1); i<=point_end; i++)
@@ -148,20 +153,22 @@ int main()
                                 sleep(4);
                                 height = height + 2;
                                 sprintf(shm,"%f",height);
-                                printf("Sleep 4s(1->2)\n");
+                                printf("Sleep 4s(%d->%d)\n", point_start, point_start+1);
                             }
                             else
                             {
                                 sleep(6);
                                 height = height + 3;
                                 sprintf(shm,"%f",height);
-                                printf("Sleep 6s(%d->%d)\n", i, i+1);
+                                printf("Sleep 6s(%d->%d)\n", i-1, i);
                             }
                         }
 
                         sleep(2);
                         height = height + 1;
                         sprintf(shm,"%f",height);
+                        printf("Xep do o diem dich\n");
+                        sleep(3);
                     }
 
                     printf("Xep do o diem dich\n");
@@ -171,13 +178,13 @@ int main()
                             sleep(4);
                             height = height - 2;
                             sprintf(shm,"%f",height);
-                            printf("Sleep 4s\n");
+                            printf("Sleep 4s(%d -> %d)\n", point_end, point_end-1);
                         }
                         else {
                             sleep(6);
                             height = height - 3;
                             sprintf(shm,"%f",height);
-                            printf("Sleep 6s(%d->%d)\n", i, i+1);
+                            printf("Sleep 6s(%d->%d)\n", i+1, i);
                         }
                     }
                     if(point_end!=1) {
